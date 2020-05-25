@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        k = k % nums.size();
+        int count = 0;
+        int start = 0;
+        while (count < nums.size())
+        {
+            int cur = start;
+            int preValue = nums[start];
+            do
+            {
+                int next = (cur+k) % nums.size();
+                int tmp = nums[next];
+                nums[next] = preValue;
+                preValue = tmp;
+                cur = next;
+                count++;
+
+            } while (cur != start);
+            start++;
+        }   
+    }
+};
